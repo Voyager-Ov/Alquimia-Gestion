@@ -1,0 +1,51 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <nav>
+    
+    <ul>
+      <li>
+        <a class="toggle-btn" (click)="toggleSidebar()">
+            
+          <i class="bi" [ngClass]="isCollapsed ? 'bi-arrow-right' : 'bi-arrow-left'"></i>
+          <span class="text">Alquimia Lavanderia</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/dashboard" routerLinkActive="active">
+          <i class="bi bi-speedometer2"></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/orders" routerLinkActive="active">
+          <i class="bi bi-box-seam"></i>
+          <span class="text">Ordenes</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/subscription" routerLinkActive="active">
+          <i class="bi bi-card-checklist"></i>
+          <span class="text">Suscripciones</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/client" routerLinkActive="active">
+          <i class="bi bi-people"></i>
+          <span class="text">Clientes</span>
+        </a>
+      </li>
+          <!-- Botones para Configuración y Perfil -->
+      <li>
+        <a routerLink="/admin/settings" routerLinkActive="active">
+          <i class="bi bi-gear"></i>
+          <span class="text">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/admin/profile" routerLinkActive="active">
+          <i class="bi bi-person-circle"></i>
+          <span class="text">Profile</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
