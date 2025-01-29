@@ -1,1 +1,12 @@
 <p>client-pedidos works!</p>
+<div>produtos en el carro</div>
+<ul>
+
+      <h2>Lista de Usuarios</h2>
+      <ul>
+        <li *ngFor="let usuario of carrito">
+          {{ usuario.nombre }} - {{ usuario.id }} - {{ usuario.apellido}} 
+        </li>
+      </ul>
+</ul>
+  

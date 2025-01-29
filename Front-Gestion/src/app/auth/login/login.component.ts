@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { UsuariosService } from '../../core/servicios/Usuario-Service/usuarios.service';
+import { AuthServiceService } from '../../core/servicios/Autenticacion-service/auth-service.service'; // Asegúrate de importar el servicio correctamente
+
 
 
 @Component({
@@ -12,28 +13,30 @@ import { UsuariosService } from '../../core/servicios/Usuario-Service/usuarios.s
   imports: [
     CommonModule,
     FormsModule,
+    RouterLink,
+    RouterLinkActive,
   ]
 })
 export class LoginComponent {
-  email: string = '';
+  username: string = '';
   password: string = '';
+  errorMessage: string = '';
 
-  constructor(private router: Router, private usuariosService: UsuariosService) {}
+  constructor(private router: Router, private AuthServiceService: AuthServiceService) {}
 
   
-  onSubmit() {
-    const usuarios = this.usuariosService.getUsuarios();
-    const usuario = usuarios.find(user => user.email === this.email && user.password === this.password);
-    if (usuario) {
-      console.log('Usuario autenticado:', usuario);
-      if (usuario.user === 'admin') {
-        this.router.navigate(['/admin/dashboard']);
-      } else if (usuario.user === 'cliente') {
-        this.router.navigate(['/cliente/dashboard']);
+  onLogin() {
+    this.AuthServiceService.login(this.username, this.password).subscribe(
+      (response) => {
+        // Almacena el token en localStorage o cookies
+        localStorage.setItem('token', response.token);
+        console.log('Login exitoso', response);
+      },
+      (error) => {
+        this.errorMessage = 'Usuario o Contraseña incorrectos';
+        console.error('Error de login', error);
       }
-    } else {
-      console.log('Credenciales incorrectas');
-    }
+    );
   }
 
   loginWithGoogle() {

@@ -1,20 +1,18 @@
-<body>
-    <div class="login-page">
-        <div class="login-block">
-            <h2>Iniciar Sesión</h2>
-            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" class="form-control" [(ngModel)]="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Iniciar Sesión</button>
-            </form>
-        </div>
-    </div>
-</body>
 
-    
+<body>
+  <div class="login-container">
+    <div class="illustration">
+      <img src="../../../assets/images/loginimg.png" alt="ilustracion">
+    </div>
+    <div class="login-form">
+      <h1>Inicio de Sesion</h1>
+      <p>Bienvenidos a Alquimia Lavanderia!</p>
+      <form (submit)="onLogin()">
+        <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+        <button type="submit">LOG IN</button>
+      </form>
+      <p id="register">No tienes cuenta? <a routerLink="/registro" routerLinkActive="active">Registrate</a></p>
+    </div>
+  </div>
+</body>

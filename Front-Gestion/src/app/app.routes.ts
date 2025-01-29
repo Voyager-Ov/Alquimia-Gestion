@@ -5,10 +5,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 // import admin
 import { AdminComponent } from './admin/admin.component';
-import { AdminDasboardComponent } from './admin/admin-dasboard/admin-dasboard.component';
-import { AdminClientComponent } from './admin/admin-client/admin-client.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminSusbcriptionComponent } from './admin/admin-susbcription/admin-susbcription.component';
+import { AdminDasboardComponent } from './admin/admin_pages/admin-dasboard/admin-dasboard.component';
+import { ClientesAdminComponent } from './admin/admin_pages/clientes-admin/clientes-admin.component';
+import { PedidosAdminComponent } from './admin/admin_pages/pedidos-admin/pedidos-admin.component';
+import { SuscriptoresAdminComponent } from './admin/admin_pages/suscriptores-admin/suscriptores-admin.component';
 // import client
 import { ClientDasboardComponent } from './client/client-dasboard/client-dasboard.component';
 import { ClientProfileComponent } from './client/client-profile/client-profile.component';
@@ -28,9 +28,9 @@ export const routes: Routes = [
     component: AdminComponent, // Layout del admin
     children: [
       { path: 'dashboard', component: AdminDasboardComponent },
-      { path: 'orders', component: AdminOrdersComponent },
-      { path: 'subscription', component: AdminSusbcriptionComponent },
-      { path: 'client', component: AdminClientComponent }
+      { path: 'pedidos', component: PedidosAdminComponent },
+      { path: 'suscripciones', component: SuscriptoresAdminComponent },
+      { path: 'clientes', component: ClientesAdminComponent }
         ]
     },
 
