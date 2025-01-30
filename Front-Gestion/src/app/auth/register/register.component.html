@@ -12,12 +12,13 @@
             <input type="number" placeholder="Numero de Telefono" [(ngModel)]="telefono" name="telefono" required>
 
             <input type="email" placeholder="Correo electrónico" [(ngModel)]="email" name="email" required>
+            <input type="direccion" placeholder="direccion" [(ngModel)]="direccion" name="direccion" required>
             <input type="text" placeholder="Nombre de usuario" [(ngModel)]="username" name="username" required>
             <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
 
             <button type="submit">Registrarse</button>
         </form>
-        <p>¿Ya tienes cuenta? <a routerLink="/inicio-de-sesion">Inicia sesión</a></p>
+        <p id="register">Ya tienes cuenta? <a routerLink="/inicio-de-sesion">Inicia sesión</a></p>
       </div>
     </div>
   </body>

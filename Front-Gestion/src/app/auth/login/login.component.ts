@@ -30,6 +30,7 @@ export class LoginComponent {
       (response) => {
         // Almacena el token en localStorage o cookies
         localStorage.setItem('token', response.token);
+        localStorage.setItem('tipo_de_usuario', response.tipo_de_usuario);
         console.log('Login exitoso', response);
       },
       (error) => {
@@ -43,6 +44,12 @@ export class LoginComponent {
     console.log('Login with Google');
   }
   
+  onlogout() {
+      // Elimina el token de localStorage o cookies
+      localStorage.removeItem('token');
+      localStorage.removeItem('tipo_de_usuario');
+      this.router.navigate(['/login']);
+  }
   
 }
 

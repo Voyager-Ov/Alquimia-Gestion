@@ -1,0 +1,6 @@
+<div class="cartita-individual">
+    <div class="cartita">
+      <h3 class="nombre_de_usuario">{{ cartita.username }}</h3>
+      <p *ngFor="let key of getKeys(cartita)">{{ key }}: {{ cartita[key] }}</p>
+    </div>
+  </div>
