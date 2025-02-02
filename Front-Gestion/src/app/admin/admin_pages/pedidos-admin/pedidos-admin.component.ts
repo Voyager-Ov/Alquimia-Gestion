@@ -16,18 +16,18 @@ export class PedidosAdminComponent {
   pedidos: pedido[] = [];
   columns = [
     { key: 'id', label: 'Id' },
-    { key: 'username', label: 'Nombre' },
-    { key: 'descripcion', label: 'Apellido' },
-    { key: 'fecha_de_recepcion', label: 'Email' },
-    { key: 'fecha_de_entrega', label: 'Telefono' },
-    { key: 'precio', label: 'Direccion' },
-    { key: 'estado_de_pedido', label: 'Nombre de usuario' },
-    { key: 'estado_de_pago', label: 'Password' }
+    { key: 'username', label: 'Nombre de Usuario' },
+    { key: 'descripcion', label: 'Descripcion' },
+    { key: 'fecha_de_recepcion', label: 'Fecha de Recepcion' },
+    { key: 'fecha_de_entrega', label: 'Fecha de Entrega' },
+    { key: 'precio', label: 'Precio' },
+    { key: 'estado_de_pedido', label: 'Estado de Pedido' },
+    { key: 'estado_de_pago', label: 'Estado de Pago' }
   ];
    constructor(private PedidosServiceService: PedidosServiceService) { }
   
     ngOnInit(): void {
-      this.PedidosServiceService.getUsuarios().subscribe({
+      this.PedidosServiceService.getPedidos().subscribe({
         next: (pedidos) => {
           this.pedidos = pedidos;
         },

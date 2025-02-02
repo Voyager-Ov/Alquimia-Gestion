@@ -27,15 +27,32 @@ export class LoginComponent {
   
   onLogin() {
     this.AuthServiceService.login(this.username, this.password).subscribe(
-      (response) => {
-        // Almacena el token en localStorage o cookies
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('tipo_de_usuario', response.tipo_de_usuario);
-        console.log('Login exitoso', response);
-      },
-      (error) => {
-        this.errorMessage = 'Usuario o Contraseña incorrectos';
-        console.error('Error de login', error);
+      {
+        next: res => {
+          console.log(res); // Ver qué devuelve el backend
+    
+          // Extraer el tipo de usuario
+          const tipoUsuario = res.user.tipo_de_usuario;
+    
+          // Guardar en localStorage
+          localStorage.setItem('user', JSON.stringify(res.user));
+          localStorage.setItem('token', res.token);
+    
+          // Redirigir según el tipo de usuario
+          if (tipoUsuario === 'administrador') {
+            this.router.navigate(['/admin/dashboard']);
+          } else if (tipoUsuario === 'cliente') {
+            this.router.navigate(['/cliente/dashboard']);
+          } else {
+            this.router.navigate(['/login']); // Si el tipo de usuario es desconocido
+          }
+        },
+        error: err => {
+         console.log(err)
+        },
+        complete: () => {
+          
+        }
       }
     );
   }

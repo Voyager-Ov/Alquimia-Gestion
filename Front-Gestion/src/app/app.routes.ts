@@ -10,11 +10,15 @@ import { ClientesAdminComponent } from './admin/admin_pages/clientes-admin/clien
 import { PedidosAdminComponent } from './admin/admin_pages/pedidos-admin/pedidos-admin.component';
 import { SuscriptoresAdminComponent } from './admin/admin_pages/suscriptores-admin/suscriptores-admin.component';
 // import client
+import { ClientComponent } from './client/client.component';
 import { ClientDasboardComponent } from './client/client-dasboard/client-dasboard.component';
 import { ClientProfileComponent } from './client/client-profile/client-profile.component';
 import { ClientPedidosComponent } from './client/client-pedidos/client-pedidos.component';
 // import page not found
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+// guardas
+import { AdminGuard } from './core/guards/admin/admin.guard';
+import { ClienteGuard } from './core/guards/client/client.guard';
 
 // Rutas de la aplicacion
 export const routes: Routes = [
@@ -24,8 +28,9 @@ export const routes: Routes = [
 
     // administrador
     {
-    path: 'admin',
+    path: 'admin', 
     component: AdminComponent, // Layout del admin
+    canActivate: [AdminGuard], 
     children: [
       { path: 'dashboard', component: AdminDasboardComponent },
       { path: 'pedidos', component: PedidosAdminComponent },
@@ -35,9 +40,16 @@ export const routes: Routes = [
     },
 
     // cliente
-    { path: 'cliente/dashboard', component: ClientDasboardComponent},
-    { path: 'cliente/pedidos', component: ClientPedidosComponent},
-    { path: 'cliente/perfil', component: ClientProfileComponent},
+    {
+      path: "cliente", 
+      component: ClientComponent,
+      canActivate: [ClienteGuard], 
+      children: [
+        { path: 'dashboard', component: ClientDasboardComponent, },
+        { path: 'pedidos', component: ClientPedidosComponent},
+        { path: 'perfil', component: ClientProfileComponent},
+      ]
+    },
 
     // redireccionamiento
     { path: '', redirectTo: 'inicio-de-sesion', pathMatch: 'full' }, // Redirigir a login por defecto

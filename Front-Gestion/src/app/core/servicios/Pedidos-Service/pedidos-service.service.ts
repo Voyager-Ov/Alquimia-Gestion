@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { pedido } from '../../Models/pedido.model';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,25 @@ export class PedidosServiceService {
   
     constructor( private httpClient: HttpClient) { }
   
-    pedidos: pedido[] = [];
+
+    private getHeaders(): HttpHeaders {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No se encontró el token de autenticación.');
+      }
+      return new HttpHeaders({
+        Authorization: `token ${token}`
+      });
+    }
+    getPedidos(): Observable<pedido[]> {
+      const headers = this.getHeaders();
+      return this.httpClient.get<pedido[]>(`${this.baseUrl}/pedidos/`, { headers }).pipe(
+        catchError((error) => {
+          console.error('Error al obtener los pedidos:', error);
+          return throwError(() => new Error('No se pudieron cargar los pedidos.'));
+        })
+      );
+    }
   
     getUsuarios(): Observable<pedido[]>{ {
       const headers = new HttpHeaders({

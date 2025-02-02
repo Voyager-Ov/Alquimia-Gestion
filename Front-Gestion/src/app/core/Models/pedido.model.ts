@@ -7,5 +7,6 @@ export interface pedido {
     precio: number;
     estado_de_pedido: string;
     estado_de_pago: string;
+    CustomUeser: object;
     [key: string]: any;
 }

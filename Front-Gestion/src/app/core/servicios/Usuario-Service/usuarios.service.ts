@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class UsuariosService {
   private baseUrl = 'http://127.0.0.1:8000'; // URL base del backend
-  private token = localStorage.getItem('token');
+  private token = sessionStorage.getItem('token');
 
   constructor( private httpClient: HttpClient) { }
 
