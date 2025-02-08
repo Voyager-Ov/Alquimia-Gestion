@@ -1,0 +1,123 @@
+/* Contenedor principal que cubre toda la pantalla */
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilos del formulario */
+form {
+  background: linear-gradient(to bottom, #5da05f67, #54976bbb); /* Gradiente de izquierda a derecha */
+  backdrop-filter: blur(10px);
+  padding: 70px;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Estilos para cada campo del formulario */
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para las etiquetas */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #fffcfc;
+}
+
+/* Estilos para los inputs */
+input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #176d1e;
+  box-shadow: 0 0 0 2px #176d1e;
+}
+
+input:hover {
+  color: black;
+  background-color: #f4f5eb;
+  transform: translateY(-2px);
+}
+
+/* Estilos para los botones */
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* Contenedor de los dos primeros botones */
+.acciones > div {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Estilos para todos los botones */
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+  background-color: #49914a; /* Color verde para todos los botones */
+  color: white;
+  margin: 0; /* Elimina cualquier margen predeterminado */
+}
+
+button:hover {
+  color: black;
+  background-color: #d9dbba;
+  transform: translateY(-2px);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  form {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  div:has(button) {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}

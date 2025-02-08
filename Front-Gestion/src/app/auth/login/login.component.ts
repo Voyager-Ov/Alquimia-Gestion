@@ -22,36 +22,32 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private router: Router, private AuthServiceService: AuthServiceService) {}
+  constructor(private AuthServiceService: AuthServiceService, private router: Router) { }
 
-  
   onLogin() {
     this.AuthServiceService.login(this.username, this.password).subscribe(
       {
         next: res => {
           console.log(res); // Ver qué devuelve el backend
-    
-          // Extraer el tipo de usuario
-          const tipoUsuario = res.user.tipo_de_usuario;
-    
-          // Guardar en localStorage
-          localStorage.setItem('user', JSON.stringify(res.user));
-          localStorage.setItem('token', res.token);
-    
+          
+          this.AuthServiceService.saveToken(res.token)
+          sessionStorage.setItem('user', JSON.stringify(res.user));          
+          
+          const type_user = res.user.tipo_de_usuario;
+
           // Redirigir según el tipo de usuario
-          if (tipoUsuario === 'administrador') {
+          if (type_user === 'administrador') {
             this.router.navigate(['/admin/dashboard']);
-          } else if (tipoUsuario === 'cliente') {
+          } else if (type_user === "cliente") {
             this.router.navigate(['/cliente/dashboard']);
           } else {
-            this.router.navigate(['/login']); // Si el tipo de usuario es desconocido
+            this.router.navigate(['/inicio-de-sesion']); // Si el tipo de usuario es desconocido
           }
         },
         error: err => {
          console.log(err)
         },
         complete: () => {
-          
         }
       }
     );
@@ -60,13 +56,7 @@ export class LoginComponent {
   loginWithGoogle() {
     console.log('Login with Google');
   }
-  
-  onlogout() {
-      // Elimina el token de localStorage o cookies
-      localStorage.removeItem('token');
-      localStorage.removeItem('tipo_de_usuario');
-      this.router.navigate(['/login']);
-  }
+
   
 }
 

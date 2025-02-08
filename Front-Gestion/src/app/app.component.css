@@ -1,9 +1,13 @@
-div {
-    margin: 0;
-    background: url("../assets/images/backgraund-login.svg")  no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    position: fixed ;
-    padding: 20px 0px;
+.container {
+    position: fixed; /* Necesario para posicionar el SVG de fondo */
+}
+
+.container svg {
+    position: absolute;
+    z-index: 0; /* Coloca el SVG detrás del contenido */
+}
+
+.content {
+    position: relative; /* Asegura que el contenido esté encima del SVG */
+    z-index: 1; /* Mayor que el z-index del SVG */
 }

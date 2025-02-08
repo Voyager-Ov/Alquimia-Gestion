@@ -1,0 +1,5 @@
+<div *ngFor="let item of items; let i = index">
+    <p>{{ item.nombre }}</p>
+    <button (click)="editarItem(item)">Editar</button>
+    <button (click)="eliminarItem(i)">Eliminar</button>
+  </div>

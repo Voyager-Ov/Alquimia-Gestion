@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,4 +12,11 @@ import { CommonModule } from '@angular/common';
 export class TablaComponent {
   @Input() data: any[] = [];
   @Input() columns: { key: string, label: string }[] = [];
+  @Output() mostrarFila = new EventEmitter<any>(); // Evento para mostrar
+  
+
+  mostarItem(fila: any) {
+    // Lógica para mostar
+    this.mostrarFila.emit(fila);
+  }
 }

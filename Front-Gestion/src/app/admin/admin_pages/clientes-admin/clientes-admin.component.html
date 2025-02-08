@@ -1,4 +1,23 @@
 <div class="usuarios">
     <h2>Lista de Usuarios</h2>
-    <app-tabla [data]="usuarios" [columns]="columns"></app-tabla>
+    <button class="create" (click)="openClosePopup()"> <i class="bi bi-plus-lg"></i>Crear Usuario</button>
+    <app-tabla 
+    [data]="clientes" 
+    [columns]="columns" 
+    (mostrarFila)="mostardatos($event)" 
+    ></app-tabla>
+    <app-datos-expandibles
+    *ngIf="desplegado"
+    [objeto]="clienteSeleccionado"
+    [campos]="edit"
+    (guardar)="onGuardarCliente($event)"
+    (eliminar)="onEliminarCliente($event)"
+    (salir)="onCancelarEdicion()"
+    ></app-datos-expandibles>
+    <app-form 
+    *ngIf="popup"
+    [fields]="userFields"
+    (formSubmit)="onUserSubmit($event)"
+    (salirpop)="onSalirPopup($event)"
+    ></app-form>
   </div>

@@ -1,0 +1,28 @@
+<div class="detalle-container">
+  <form [formGroup]="form">
+    <div class="campo" *ngFor="let campo of campos">
+      <label>{{ campo.label }}:</label>
+      
+      <div *ngIf="!editando" class="valor">
+        {{ objeto?.[campo.key] }}
+      </div>
+
+      <input *ngIf="editando" type="text" [formControlName]="campo.key"  name="{{ campo.key }}">
+    </div>
+    <div class="acciones">
+
+      <div *ngIf="!editando">
+        <button (click)="habilitarEdicion()">Editar</button>
+        <button (click)="eliminarItem()">Eliminar</button>
+      </div>
+      
+
+      <div *ngIf="editando">
+        <button (click)="guardarCambios()">Guardar</button>
+        <button (click)="cancelarEdicion()">Cancelar</button>
+      </div>
+
+      <button (click)="salir.emit()">salir</button>
+    </div>
+  </form>
+</div>

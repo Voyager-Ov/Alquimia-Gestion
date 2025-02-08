@@ -10,7 +10,7 @@ export class ClienteGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 
     if (user && user.tipo_de_usuario === 'cliente') {
       return true;

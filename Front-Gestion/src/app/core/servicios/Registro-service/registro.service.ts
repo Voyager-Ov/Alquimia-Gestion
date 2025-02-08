@@ -7,7 +7,7 @@ import { cliente } from '../../Models/cliente.model';
   providedIn: 'root'
 })
 export class RegistroService {
-  private apiUrl = 'http://localhost:8000/register/'; // Cambia a la URL de tu backend
+  private apiUrl = 'http://localhost:8000/register'; // Cambia a la URL de tu backend
 
   constructor(private http: HttpClient) {}
 

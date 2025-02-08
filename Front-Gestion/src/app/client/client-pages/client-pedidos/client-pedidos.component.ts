@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 
-import { CarritoService } from "../../core/services/carrito/carrito.service";
-import { carrito } from "../../core/Models/carrito.model";
+import { CarritoService } from "../../../core/services/carrito/carrito.service";
+import { carrito } from "../../../core/Models/carrito.model";
 import { Subscription, filter, map} from 'rxjs';
 
 @Component({

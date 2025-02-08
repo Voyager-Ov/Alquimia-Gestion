@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 
 
@@ -9,31 +10,40 @@ import { Observable } from 'rxjs';
 })
 export class AuthServiceService {
 
-  private apiUrl = 'http://localhost:8000/api/login/'; // Cambia a la URL de tu backend
+  private apiUrl = 'http://localhost:8000'; // Cambia a la URL de tu backend
   private TOKEN_KEY = 'authToken';
-
 
   constructor(private http: HttpClient) {}
 
+  //login
   login(username: string, password: string): Observable<any> {
-    return this.http.post(this.apiUrl, { username, password });
+    return this.http.post(`http://localhost:8000/login`, { username, password });
   }
 
-  setToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
+  //perfil
+  getPerfil(): Observable<any> {
+    const headers = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      Authorization: 'token ' + this.getToken()
+    });
+    return this.http.get(`${this.apiUrl}/perfil`, { headers });
   }
 
+  //logout
+  logout(): void {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+
+  }
+
+  //token 
   getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+    const token = sessionStorage.getItem('token');
+    return token
   }
 
-  removeToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
+  saveToken(token: string): void {
+    sessionStorage.setItem('token', token);
   }
-
-  isAuthenticated(): boolean {
-    return !!this.getToken();
-  }
-  
 
 }

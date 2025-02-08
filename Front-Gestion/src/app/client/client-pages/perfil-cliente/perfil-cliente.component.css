@@ -1,0 +1,25 @@
+.perfil-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .perfil-info {
+    margin-bottom: 20px;
+  }
+  
+  .logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .loading {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+  }

@@ -1,15 +1,3 @@
-.admin-layaut {
-      display: flex;
-      flex-direction: row;
-      backdrop-filter: blur(5px);
-      margin: 0px 0px;
-
-}
-p {
-      font-family: 'Poppins', sans-serif; /* Asegúrate de importar esta fuente en tu proyecto si no la tienes */
-      font-size: 100%;
-      text-align: center; /* Centra el texto */
-      margin: 20px 0; /* Márgenes superiores e inferiores */
-      padding: 10px; /* Espaciado interno */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+.admin-layout {
+    display: flex;
 }

@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngFor="let field of fields" class="form-field">
+      <label [for]="field.key">{{ field.label }}</label>
+      
+      <input 
+        [type]="field.type"
+        [id]="field.key"
+        [formControlName]="field.key">
+    </div>
+    <div class="acciones">
+      <div>
+        <button type="submit" [disabled]="form.invalid">Cargar Datos</button>
+        <button type="button" (click)="resetForm()">Limpiar</button>
+      </div>
+      <button (click)="salir()">Salir</button>
+    </div>
+  </form>

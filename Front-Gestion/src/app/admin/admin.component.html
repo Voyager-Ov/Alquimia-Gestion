@@ -1,8 +1,9 @@
-<div class="admin-layaut">
-  <app-navbar class="side-bar"></app-navbar>
-  <div>
-    <p>Bienvenido de nuevo Alquimia </p>
-    <router-outlet class="content"></router-outlet>
+<div class="admin-layout">
+  <app-navbar class="side-bar" [menuItems]="menuItems"></app-navbar>
+  <div class="main-content">
+    <p class="welcome-message">Bienvenido de nuevo Alquimia</p>
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
- 

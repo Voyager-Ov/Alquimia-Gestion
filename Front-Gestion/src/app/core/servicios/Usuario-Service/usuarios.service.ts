@@ -9,18 +9,21 @@ import { Observable } from 'rxjs';
 
 
 export class UsuariosService {
-  private baseUrl = 'http://127.0.0.1:8000'; // URL base del backend
-  private token = sessionStorage.getItem('token');
+  private token = localStorage.getItem('token');
 
   constructor( private httpClient: HttpClient) { }
 
   usuarios: usuario[] = [];
 
   getUsuarios(): Observable<usuario[]>{ {
+    const token = localStorage.getItem('token');
+
     const headers = new HttpHeaders({
-      Authorization: `token ${this.token}`
+      'Authorization': `Bearer ${token}` // Agregar el token al header
     });
-    return this.httpClient.get<usuario[]>(`${this.baseUrl}/usuarios_list/`, { headers });
+
+    return this.httpClient.post<usuario[]>(`http://127.0.0.1:8000/listar_filtrar_usuarios`, { headers });
+  
    }
   }
 }

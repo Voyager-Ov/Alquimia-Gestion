@@ -1,0 +1,10 @@
+<div *ngIf="pefil" class="perfil-container">
+    <h2>Perfil de Usuario</h2>
+    <div class="perfil-info">
+      <pre>{{ pefil | json }}</pre>
+    </div>
+    <button (click)="onLogout()" class="logout-button">Cerrar Sesión</button>
+  </div>
+  <div *ngIf="!pefil" class="loading">
+    Cargando perfil...
+  </div>
