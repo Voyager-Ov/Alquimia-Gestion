@@ -19,13 +19,6 @@ export class ClienteService {
   return this.httpClient.get<cliente[]>(`${this.baseUrl}/usuarios_clientes`, { headers })
   }
 
-  getToken(): string | null {
-    const token = sessionStorage.getItem('token');
-    return token
-  }
-
-
-  
   actualizarCliente(datos: any): Observable<any> {
     const headers = new HttpHeaders({ 
       'Content-Type': 'application/json',
@@ -44,5 +37,23 @@ export class ClienteService {
       body: { filtro: filter }
     };
     return this.httpClient.delete<any>(`${this.baseUrl}/eliminar_usuario`, options);
+  }
+
+  filtrarClientes(filter: any): Observable<any> {
+    const header = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      Authorization: 'token ' + this.getToken()
+    });
+    const options = {
+      headers: header,
+      body: { filtro: filter }
+    };
+    return this.httpClient.post<any>(`${this.baseUrl}/filtrar_usuarios`, options);
+  }
+
+  // funcion para opbtener el token
+  getToken(): string | null {
+    const token = sessionStorage.getItem('token');
+    return token
   }
 }

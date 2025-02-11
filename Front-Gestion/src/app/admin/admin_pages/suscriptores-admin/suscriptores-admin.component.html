@@ -1,4 +1,23 @@
 <div class="suscriptorees">
     <h2>Lista de Suscriptores</h2>
-    <app-tabla [data]="suscripciones" [columns]="columns"></app-tabla>
+    <button class="create" (click)="openClosePopup()"> <i class="bi bi-plus-lg"></i>Crear suscripcion</button>
+    <app-tabla 
+    [data]="suscripciones" 
+    [columns]="columns" 
+    (mostrarFila)="mostardatos($event)">
+    </app-tabla>
+    <app-datos-expandibles
+    *ngIf="desplegado"
+    [objeto]="subSeleccionada"
+    [campos]="edit"
+    (guardar)="onGuardarSub($event)"
+    (eliminar)="onEliminarSub($event)"
+    (salir)="onCancelarEdicion()"
+    ></app-datos-expandibles>
+    <app-form 
+    *ngIf="popup"
+    [fields]="subFields"
+    (formSubmit)="onSubSubmit($event)"
+    (salirpop)="onSalirPopup($event)"
+    ></app-form>
   </div>

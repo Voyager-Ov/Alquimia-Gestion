@@ -1,0 +1,22 @@
+.suscriptorees {
+    margin: 50px;
+    gap: 10px;
+}
+.suscriptorees h2 {
+    margin-bottom: 30px;
+}
+.create {
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgba(52, 114, 52, 0.801);
+    border: bold rgba(13, 32, 13, 0.801);
+    border-radius: 20px;
+    width: 100vh;
+    box-shadow: 100px;
+}
+
+.create:hover {
+    background-color: rgba(65, 138, 65, 0.884);
+    transform: translateY(-2px);
+}

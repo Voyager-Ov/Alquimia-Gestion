@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormField } from '../../core/Models/FormField.models';
 
 @Component({
   selector: 'app-datos-expandibles',
@@ -52,7 +53,6 @@ export class DatosExpandiblesComponent implements OnInit {
     if (this.form.valid) {
       const datosActualizados = { ...this.objeto, ...this.form.value };
       this.guardar.emit(datosActualizados);
-      console.log("datos actuializados:", datosActualizados )
       this.editando = false;
       this.deshabilitarFormulario();
     }

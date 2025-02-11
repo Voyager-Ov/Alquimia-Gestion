@@ -29,7 +29,7 @@ export class FormComponent{
     const group: any = {};
     
     this.fields.forEach(field => {
-      group[field.key] = '';
+      group[field.key] = [field.value || '', field.validators || []];
     });
 
     this.form = this.fb.group(group);
@@ -49,4 +49,6 @@ export class FormComponent{
     this.form.reset(); 
     this.salirpop.emit(true)
   }
+
+  
 }

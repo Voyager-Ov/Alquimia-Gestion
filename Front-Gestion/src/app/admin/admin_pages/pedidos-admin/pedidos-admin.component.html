@@ -1,4 +1,24 @@
 <div class="pedidos">
-  <h2>Lista de Pedidos</h2>
-  <app-tabla [data]="pedidos" [columns]="columns"></app-tabla>
+  <h2>Pedidos</h2>
+  <p>hacer loas cartads para los pedidos</p>
+  <button class="create" (click)="openClosePopup()"> <i class="bi bi-plus-lg"></i>Crear Pedido</button>
+  <app-tabla 
+  [data]="pedidos" 
+  [columns]="columns" 
+  (mostrarFila)="mostardatos($event)">
+  </app-tabla>
+  <app-datos-expandibles
+  *ngIf="desplegado"
+  [objeto]="pedidoSeleccionado"
+  [campos]="edit"
+  (guardar)="onGuardarPedido($event)"
+  (eliminar)="onEliminarPedido($event)"
+  (salir)="onCancelarEdicion()"
+  ></app-datos-expandibles>
+  <app-form 
+  *ngIf="popup"
+  [fields]="PedidoFields"
+  (formSubmit)="onSubSubmit($event)"
+  (salirpop)="onSalirPopup($event)"
+  ></app-form>
 </div>

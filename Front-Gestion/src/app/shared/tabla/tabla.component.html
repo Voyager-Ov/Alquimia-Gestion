@@ -7,7 +7,7 @@
     <tbody>
       <tr *ngFor="let item of data; let i = index" (click)="mostarItem(item)">   
         <td *ngFor="let column of columns" [attr.data-label]="column.label">
-          {{ item[column.key] }}
+          {{ getNestedValue(item, column.key) }}
         </td>
       </tr>
     </tbody>

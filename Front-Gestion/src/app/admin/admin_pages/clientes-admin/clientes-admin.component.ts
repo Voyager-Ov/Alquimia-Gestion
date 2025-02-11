@@ -62,7 +62,6 @@ export class ClientesAdminComponent implements OnInit {
     },
   ];
 
-
   clientes: cliente[] = [];
   clienteSeleccionado: cliente[] = [];
   columns = [

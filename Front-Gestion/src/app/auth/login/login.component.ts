@@ -27,12 +27,9 @@ export class LoginComponent {
   onLogin() {
     this.AuthServiceService.login(this.username, this.password).subscribe(
       {
-        next: res => {
-          console.log(res); // Ver qué devuelve el backend
-          
+        next: res => {          
           this.AuthServiceService.saveToken(res.token)
           sessionStorage.setItem('user', JSON.stringify(res.user));          
-          
           const type_user = res.user.tipo_de_usuario;
 
           // Redirigir según el tipo de usuario

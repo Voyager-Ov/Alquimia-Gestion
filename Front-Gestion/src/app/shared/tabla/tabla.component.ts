@@ -19,4 +19,9 @@ export class TablaComponent {
     // Lógica para mostar
     this.mostrarFila.emit(fila);
   }
+
+  // Función para obtener valores anidados
+  getNestedValue(obj: any, key: string): any {
+    return key.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : ''), obj);
+  }
 }
